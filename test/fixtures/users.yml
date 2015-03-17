@@ -1,2 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+goomba:
+  name: Goomba Mehta
+  email: goomba.mehta@akqa.com
+  password_digest: <%= User.digest('password') %>
