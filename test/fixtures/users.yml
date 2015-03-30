@@ -4,6 +4,7 @@ goomba:
   name: Goomba Mehta
   email: goomba.mehta@akqa.com
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 troopa:
   name: Troopa Mehta
