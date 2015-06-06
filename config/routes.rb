@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'events/new'
+
+  get 'events/edit'
+
   get 'calendars/new'
 
   get 'calendars/edit'
