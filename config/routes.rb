@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'calendars/new'
+
+  get 'calendars/edit'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
