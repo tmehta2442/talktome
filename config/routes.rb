@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'events/new'
+
+  get 'events/edit'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
