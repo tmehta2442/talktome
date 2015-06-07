@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/edit'
-
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -10,7 +8,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root 'static_pages#home'
-  get 'newevents' => 'events#new'
+  # get 'newevents' => 'events#new'
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
+  resources :events
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 

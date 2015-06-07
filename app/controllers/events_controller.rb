@@ -1,10 +1,18 @@
 class EventsController < ApplicationController
-  before_action :admin_user, only: [:new, :edit]
+  before_action :admin_user, only: [:index, :new, :edit]
   
-  def new
+  def index
     @event = Event.new
   end
+  
+  def new
+    
+  end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+  
   def edit
   end
   
