@@ -6,6 +6,13 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <h5>
+        <% if current_user.admin? %>
+          <%= link_to "new events", newevents_path %>
+          <% else %>
+          not admin
+        <% end %>
+      </h5>
     </section>
   </aside>
 </div>

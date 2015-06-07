@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'events/new'
-
   get 'events/edit'
 
   get 'password_resets/new'
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root 'static_pages#home'
+  get 'newevents' => 'events#new'
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
