@@ -21,8 +21,8 @@ User.create!(name:  "Tejas Mehta",
              admin: false,
              activated: true,
              activated_at: Time.zone.now)
-
-5.times do |n|
+             
+10.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@akqa.com"
   password = "password"
