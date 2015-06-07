@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require responsive-calendar.js
+//= require events.js
 //= require_tree .
