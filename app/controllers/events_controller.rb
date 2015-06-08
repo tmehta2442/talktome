@@ -5,6 +5,15 @@ class EventsController < ApplicationController
     @event = Event.new
   end
   
+  def create
+    @event = Event.new(event_params)
+    if @event.save
+      redirect_to @event
+    else
+      render 'new'
+    end
+  end
+  
   def new
     
   end
@@ -17,6 +26,10 @@ class EventsController < ApplicationController
   end
   
   private
+  
+  def event_params
+    params.require(:event).permit(:event_name, :start_time)
+  end
   
   def admin_user
     if !current_user.admin?
