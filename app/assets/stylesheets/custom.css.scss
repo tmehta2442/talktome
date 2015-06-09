@@ -12,9 +12,13 @@ $gray-medium-light: #eaeaea;
 }
 /* universal */
 
-body {
-  padding-top: 60px;
-}
+
+  @media (min-width: 768px) {
+    body {
+     padding-top: 60px;
+    }
+  }
+
 
 section {
   overflow: auto;
