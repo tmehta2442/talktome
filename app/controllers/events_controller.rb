@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
-  before_action :admin_user, only: [:index, :new, :edit]
+  before_action :admin_user, only: [:create, :edit, :destroy]
   
   def index
     @event = Event.new
+    @events = Event.all
   end
   
   def create
@@ -19,12 +20,33 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    if logged_in?
+      @event = Event.find(params[:id])
+    else
+    store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
   
   def edit
+    @events = Event.all
+    if !logged_in?
+      store_location
+      flash[:info] = "only admin can edit, please log in as admin"
+      redirect_to login_url
+    elsif !current_user.admin?
+      redirect_to(root_url) && flash[:info] = "Not an admin, cannot edit events"
+    elsif current_user.admin?
+      flash[:info] = "edit events here"
+    end
   end
   
+  def destroy
+    Event.find(params[:id]).destroy
+    flash[:success] = "Event deleted"
+    redirect_to events_edit_path
+  end
   private
   
   def event_params
@@ -32,10 +54,12 @@ class EventsController < ApplicationController
   end
   
   def admin_user
-    if !current_user.admin?
+    if !logged_in?
+      flash[:info] = "please log in"
+    elsif !current_user.admin?
       redirect_to(root_url) && flash[:info] = "Not an admin, cannot create events"
     elsif current_user.admin?
-      flash[:info] = "create your event here"
+      flash.now[:info] = "create your event here"
     end
   end
 end

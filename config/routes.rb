@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   get 'sessions/new'
-
+  
+  get 'events/edit'
+  
+  # get 'events/show'
+  
   get 'users/new'
 
   root 'static_pages#home'
   # get 'newevents' => 'events#new'
   get 'help' => 'static_pages#help'
+  # get 'show_event' => 'event/show'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'signup' => 'users#new'
