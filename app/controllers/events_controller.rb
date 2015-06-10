@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :admin_user, only: [:create, :edit, :destroy]
+  before_action :admin_user_edit, only: [:edit, :destroy]
+  before_action :admin_user_create, only: :create
   
   def index
     @event = Event.new
@@ -37,8 +38,7 @@ class EventsController < ApplicationController
       redirect_to login_url
     elsif !current_user.admin?
       redirect_to(root_url) && flash[:info] = "Not an admin, cannot edit events"
-    elsif current_user.admin?
-      flash[:info] = "edit events here"
+    
     end
   end
   
@@ -53,13 +53,19 @@ class EventsController < ApplicationController
     params.require(:event).permit(:event_name, :start_time)
   end
   
-  def admin_user
+  def admin_user_edit
+    if !logged_in?
+      flash[:info] = "please log in"
+    elsif !current_user.admin?
+      redirect_to(root_url) && flash[:info] = "Not an admin, cannot edit events"
+    end
+  end
+  
+  def admin_user_create
     if !logged_in?
       flash[:info] = "please log in"
     elsif !current_user.admin?
       redirect_to(root_url) && flash[:info] = "Not an admin, cannot create events"
-    elsif current_user.admin?
-      flash.now[:info] = "create your event here"
     end
-  end
+  end  
 end
