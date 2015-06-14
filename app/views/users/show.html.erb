@@ -7,10 +7,12 @@
         <%= @user.name %>
       </h1>
       <h5>
-        <% if current_user.admin? %>
+        <% if current_user.admin? && current_user?(@user)%>
           <%= link_to "new events", events_path %>
-          <% else %>
-          not admin
+          <% elsif current_user?(@user) %>
+          your account <%= current_user.name %>
+          <% elsif current_user %>
+          not your account <%= current_user.name %>, this is <%= @user.name %>'s account
         <% end %>
       </h5>
     </section>
