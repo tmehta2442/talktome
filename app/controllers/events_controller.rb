@@ -32,6 +32,7 @@ class EventsController < ApplicationController
   
   def edit
     @events = Event.all
+    @users = User.all
     if !logged_in?
       store_location
       flash[:info] = "only admin can edit, please log in as admin"
@@ -50,7 +51,7 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:event_name, :start_time)
+    params.require(:event).permit(:event_name, :start_time, :user_id)
   end
   
   def admin_user_edit

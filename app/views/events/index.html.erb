@@ -1,14 +1,16 @@
 <% provide(:title, 'Event') %>
 <div class="row">
+  <h5><%= current_user.name %></h5>
+  <h5>user id <%= current_user.id %></h5>
   <% if current_user.admin? %>
     <h1>create event</h1>
     <div class="col-sm-6">
       <%= form_for(:event, url: events_path) do |f| %>
         <%= render 'shared/event_error_messages' %>
-        
         <div class="col-sm-12">
+          <%= f.number_field :user_id, class: 'hidden', required: true, :value => current_user.id %>
           <%= f.label :event_name %>
-          <%= f.text_field :event_name, class: 'form-control', required: true  %>
+          <%= f.text_field :event_name, class: 'form-control', required: true%>
         </div>
         
         <div class="col-sm-7">

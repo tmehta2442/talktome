@@ -2,9 +2,16 @@
 
 <div class="col-sm-12">
   <ul class="events">
-    <%= render @events%>
+    <% @events.each do |t| %>
+      <li>
+        <%= User.find(t.user_id).name %> 
+        created <%= link_to t.event_name, t %>
+        | <%= link_to "delete", t, method: :delete, data: { confirm: "You sure?" } %>
+        | EventID #<%= t.id %> 
+        | UserID # <%= t.user_id %>
+      </li> 
+    <% end %>
   </ul>
 </div>
 
 <p>Find me in app/views/events/edit.html.erb</p>
-
