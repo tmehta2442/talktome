@@ -2,6 +2,12 @@
   <%= link_to event.event_name, event %>
   <% if current_user.admin? %>
     | <%= link_to "delete", event, method: :delete, data: { confirm: "You sure?" } %>
-    admin should only see this underscore
+    | <%= event.id %> eventID
+    | <%= @eventid %> eventID DB
+    || <%= event.user_id %> userID
+    | <%= @eventuserid %> userID DB
+    | <%= @userid.name %> from User DB
+    || <%= @userfind %> what is this?
+    | admin should only see this underscore
   <% end %>
 </li>
