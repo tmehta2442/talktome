@@ -32,9 +32,10 @@ class EventsController < ApplicationController
   
   def edit
     @events = Event.all
-    @eventid = 2      #2
-    @eventuserid = Event.find(@eventid).user_id
-    @userid = User.find_by(id: @eventuserid)
+    # @eventid = 2
+    @eventid = Event.find_by(params[:id]).user_id    #2
+    # @eventuserid = Event.find(@eventid).user_id
+    # @userid = User.find_by(id: @eventuserid)
     # @userfind = User.find_by[:id]
     if !logged_in?
       store_location
