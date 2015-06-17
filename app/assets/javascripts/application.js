@@ -12,15 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 
-$('document').ready(function() {
-  setTimeout(function() {
-    $('.alert-info').slideUp();
-  }, 3000);
-  setTimeout(function() {
-    $('.alert-success').slideUp();
-  }, 3500);
+
+$(document).on("page:load ready", function(){
+    $("#testing123").datepicker({ dateFormat: 'yy-mm-dd'});
 });
