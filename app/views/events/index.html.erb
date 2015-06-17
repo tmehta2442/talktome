@@ -15,8 +15,13 @@
         
         <div class="col-sm-7">
           <%= f.label :start_time %>
-          <%= f.date_field :start_time, class: 'form-control', required: true  %>
+          <%= f.text_field :start_time, id: "dateFieldId", class: "form-control" %>
         </div>
+
+        <!--<div class="col-sm-7 visible-xs">-->
+        <!--  f.label :start_time-->
+        <!--  f.date_field :start_time, class: "form-control"-->
+        <!--</div>-->
         
         <div class="col-sm-12">
           <%= f.submit "Create my event", class: "btn btn-primary" %>

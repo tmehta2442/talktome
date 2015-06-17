@@ -12,7 +12,8 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event
     else
-      render 'new'
+      redirect_to events_url
+      flash[:danger] = "Invalid Event"
     end
   end
   
