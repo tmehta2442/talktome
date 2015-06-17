@@ -19,5 +19,5 @@
 
 
 $(document).on("page:load ready", function(){
-    $("#testing123").datepicker({ dateFormat: 'yy-mm-dd'});
+    $("#dateFieldId").datepicker({ dateFormat: 'yy-mm-dd'});
 });
