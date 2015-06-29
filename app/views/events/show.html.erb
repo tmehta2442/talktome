@@ -2,3 +2,22 @@
 
 <h4><%= @event.event_name %></h4>
 <h4><%= @event.start_time %></h4>
+
+<ul class="list-unstyled">
+  <li><%= check_box_tag("8:30AM", 1, false, class: "checkboxes-container") %>
+  <%= label_tag("8:30AM") %></li>
+  <li><%= check_box_tag("9:00AM", 2, false, class: "checkboxes-container")%>
+  <%= label_tag("9:00AM") %></li>
+  <li><%= check_box_tag("9:30AM", 3, false, class: "checkboxes-container") %>
+  <%= label_tag("9:30AM") %></li>
+  <li><%= check_box_tag("10:00AM", 4, false, class: "checkboxes-container")%>
+  <%= label_tag("10:00AM") %></li>
+  <li><%= check_box_tag("10:30AM", 5, false, class: "checkboxes-container") %>
+  <%= label_tag("10:30AM") %></li>
+  <li><%= check_box_tag("11:00AM", 6, false, class: "checkboxes-container")%>
+  <%= label_tag("11:00AM") %></li>
+  <li><%= check_box_tag("11:30AM", 7, false, class: "checkboxes-container") %>
+  <%= label_tag("11:30AM") %></li>
+  <li><%= check_box_tag("12:00PM", 8, false, class: "checkboxes-container")%>
+  <%= label_tag("12:00PM") %></li>  
+</ul>
