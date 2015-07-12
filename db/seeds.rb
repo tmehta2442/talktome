@@ -30,6 +30,14 @@ User.create!(name:  "Dennis Charles",
              activated: true,
              activated_at: Time.zone.now)
              
+User.create!(name:  "Another Mehta",
+             email: "tj@tejas-mehta.com",
+             password: "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
+             
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@akqa.com"
