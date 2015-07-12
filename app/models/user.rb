@@ -1,6 +1,7 @@
 
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :events
+  has_many :events
+  
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -8,8 +9,10 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[akqa.com]+\z/i
+  # validates :email, presence: true, length: { maximum: 255 },
+  #                   format: { with: VALID_EMAIL_REGEX },
+  #                   uniqueness: { case_sensitive: false }
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true

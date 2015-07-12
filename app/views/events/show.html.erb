@@ -2,3 +2,23 @@
 
 <h4><%= @event.event_name %></h4>
 <h4><%= @event.start_time %></h4>
+
+<ul class="list-unstyled">
+  <li>event id <%= @event.id %></li>
+  Available Times:
+  <% @appointment.each do |time| %>
+    <% if time.time_slot_id < 4 %>
+      <li>
+        <%= time.time_slot_id + 8 %>:00am
+      </li>
+    <% elsif time.time_slot_id == 4 %>
+      <li>
+        <%= time.time_slot_id + 8 %>:00pm
+      </li>
+    <% elsif time.time_slot_id > 4 %>
+      <li>
+        <%= time.time_slot_id - 4 %>:00pm
+      </li>
+    <% end %>
+  <% end %>
+</ul>

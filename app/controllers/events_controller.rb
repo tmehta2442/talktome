@@ -1,14 +1,14 @@
 class EventsController < ApplicationController
-  before_action :admin_user_edit, only: [:edit, :destroy]
+  before_action :admin_user_edit, only: [:edit, :destroy, :new]
   before_action :admin_user_create, only: :create
   
   def index
-    @event = Event.new
     @events = Event.all
   end
   
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     if @event.save
       redirect_to @event
     else
@@ -18,12 +18,14 @@ class EventsController < ApplicationController
   end
   
   def new
-    
+    @event = Event.new
   end
 
   def show
+    
     if logged_in?
       @event = Event.find(params[:id])
+      @appointment = Appointment.where(event_id: @event)
     else
     store_location
       flash[:danger] = "Please log in."
@@ -52,7 +54,7 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:event_name, :start_time, :user_id)
+    params.require(:event).permit(:event_name, :start_time, time_slot_ids: [])
   end
   
   def admin_user_edit

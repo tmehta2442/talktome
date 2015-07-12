@@ -1,1 +1,28 @@
-new page for events
+<h1>create event</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <%= simple_form_for(@event, url: events_path) do |f| %>
+      <%= render 'shared/event_error_messages' %>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.input :event_name, class: 'form-control', required: true%>
+        </div>
+        
+        <div class="col-sm-4">
+          <%= f.label "Event date" %>
+          <%= f.text_field :start_time, id: "dateFieldId", as: "date", class: "form-control", required: true %>
+        </div>
+        
+        <div class="col-sm-12">
+          <%= f.association :time_slots, as: :check_boxes, collection: TimeSlot.all %>
+        </div>
+      </div>
+  
+      
+      <div class="col-sm-12">
+        <%= f.submit "Create my event", class: "btn btn-primary" %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
