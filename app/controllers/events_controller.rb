@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :admin_user_create, only: :create
   
   def index
-    @events = current_user.events
+    @events = Event.all
   end
   
   def create
@@ -22,8 +22,10 @@ class EventsController < ApplicationController
   end
 
   def show
+    
     if logged_in?
       @event = Event.find(params[:id])
+      @appointment = Appointment.where(event_id: @event)
     else
     store_location
       flash[:danger] = "Please log in."
