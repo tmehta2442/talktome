@@ -30,14 +30,25 @@ User.create!(name:  "Dennis Charles",
              activated: true,
              activated_at: Time.zone.now)
              
-User.create!(name:  "Another Mehta",
-             email: "tj@tejas-mehta.com",
+User.create!(name:  "Dan Draper",
+             email: "dan@draper.com",
              password: "foobar",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
              
+TimeSlot.create!(hour: 9)
+TimeSlot.create!(hour: 10)
+TimeSlot.create!(hour: 11)
+TimeSlot.create!(hour: 12)
+TimeSlot.create!(hour: 13)
+TimeSlot.create!(hour: 14)
+TimeSlot.create!(hour: 15)
+TimeSlot.create!(hour: 16)
+TimeSlot.create!(hour: 17)
+TimeSlot.create!(hour: 18)
+
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@akqa.com"

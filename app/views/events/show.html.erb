@@ -6,19 +6,14 @@
 <ul class="list-unstyled">
   <li>event id <%= @event.id %></li>
   Available Times:
-  <% @appointment.each do |time| %>
-    <% if time.time_slot_id < 4 %>
-      <li>
-        <%= time.time_slot_id + 8 %>:00am
-      </li>
-    <% elsif time.time_slot_id == 4 %>
-      <li>
-        <%= time.time_slot_id + 8 %>:00pm
-      </li>
-    <% elsif time.time_slot_id > 4 %>
-      <li>
-        <%= time.time_slot_id - 4 %>:00pm
-      </li>
-    <% end %>
+  
+  <% @event.time_slots.each do |time_slot| %>
+    <li>
+      <% if @event.bookings.exists?(time_slot_id: time_slot.id) %>
+        <%= time_slot.hour %>:00 is filled
+      <% else %>
+        <%= link_to("#{time_slot.hour}:00", new_booking_path(time_slot_id: time_slot.id, event_id: @event.id)) %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
