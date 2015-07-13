@@ -1,0 +1,9 @@
+
+<h1>New Booking</h1>
+<p>You are registering for Time Slot <%= @time_slot.hour %>:00</p>
+
+<%= form_for @booking do |form| %>
+  <%= form.hidden_field :time_slot_id %>
+  <%= form.hidden_field :event_id %>
+  <%= form.submit "Confirm" %>
+<% end %>

@@ -4,8 +4,16 @@
   <h2>
     This is the home page for AKQA's massage app.
   </h2>
-  
-  <%= link_to "sign up now!", signup_path, class: "btn btn-lg btn-primary"%>
+
+  <% if logged_in? %>
+    <% if current_user.admin %>
+      <%= link_to "current events", events_edit_path, class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <%= link_to "current events", events_path, class: "btn btn-lg btn-primary" %>  
+    <% end %>
+  <% else %>
+    <%= link_to "sign up now!", signup_path, class: "btn btn-lg btn-primary"%>
+  <% end %>
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails logo", class: "resize_logo"), 'http://rubyonrails.org/' %>

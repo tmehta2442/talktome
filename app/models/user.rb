@@ -1,6 +1,8 @@
 
 class User < ActiveRecord::Base
   has_many :events
+  has_many :appointments
+  has_many :bookings
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
